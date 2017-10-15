@@ -41,6 +41,10 @@ class RedisSMQPromise {
     get receiveMessage() {
         return Promise.promisify(this.rsmq.receiveMessage);
     };
+            
+    get popMessage() {
+        return Promise.promisify(this.rsmq.popMessage);
+    };
 
     get deleteMessage() {
         return Promise.promisify(this.rsmq.deleteMessage);
