@@ -10,7 +10,16 @@ class RedisSMQPromise {
     }
 
     get listQueues() {
-        return Promise.promisify(this.rsmq.listQueues);
+        
+        return new Promise(function (fullfilled, rejected) {
+            
+            return this.rsmq.listQueues(function (err, queues) {
+            
+               if (err) return rejected
+                
+               return fullfilled(queues)
+            
+            }
     }
 
     get createQueue() {
